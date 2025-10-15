@@ -37,3 +37,5 @@ mingwei\main.o: ../Core/Inc/usart.h
 mingwei\main.o: ../Core/Inc/gpio.h
 mingwei\main.o: ./APP/Led.h
 mingwei\main.o: ./BSP_DRIVER/BSP_LED_DRIVER.h
+mingwei\main.o: ./APP/uart_app.h
+mingwei\main.o: ./BSP_DRIVER/bsp_uart_driver.h

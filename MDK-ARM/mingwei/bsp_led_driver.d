@@ -1,5 +1,5 @@
 mingwei\bsp_led_driver.o: BSP_DRIVER\BSP_LED_DRIVER.c
-mingwei\bsp_led_driver.o: BSP_DRIVER\BSP_LED_DRIVER.H
+mingwei\bsp_led_driver.o: BSP_DRIVER\BSP_LED_DRIVER.h
 mingwei\bsp_led_driver.o: ../Core/Inc/main.h
 mingwei\bsp_led_driver.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 mingwei\bsp_led_driver.o: ../Core/Inc/stm32f4xx_hal_conf.h

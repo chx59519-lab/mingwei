@@ -59,5 +59,8 @@
   "C_Cpp.errorSquiggles": "disabled",
   "stm32-for-vscode.openOCDPath": false,
   "stm32-for-vscode.makePath": false,
-  "stm32-for-vscode.armToolchainPath": "E:\\STM32CubeCLT\\STM32CubeCLT_1.19.0\\GNU-tools-for-STM32\\bin"
+  "stm32-for-vscode.armToolchainPath": "E:\\STM32CubeCLT\\STM32CubeCLT_1.19.0\\GNU-tools-for-STM32\\bin",
+  "files.associations": {
+    "bsp_led_driver.h": "c"
+  }
 }

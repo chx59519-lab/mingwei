@@ -743,6 +743,11 @@
               <FileType>1</FileType>
               <FilePath>.\BSP_DRIVER\delay.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_uart_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\BSP_DRIVER\bsp_uart_driver.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -752,6 +757,11 @@
               <FileName>Led.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\APP\Led.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\APP\uart_app.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Led.h"
+#include "uart_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +49,10 @@
 /* USER CODE BEGIN PV */
 LED_Handle_t led1;
 LED_Handle_t led2;
+UART_Handle_t hUart1;
+uint8_t tx_buf[] = "Hello UART!\r\n";
+uint8_t rx_buf[64];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -98,6 +103,8 @@ int main(void)
 	LED_Register(&led1, LED2);
   LED_StartBlink(&led1, 500);
 	LED_StartBlink(&led2, 500);
+
+  UART_Register(&hUart1, UART1);
 //	dac_set_voltage(3300);
 
   /* USER CODE END 2 */
@@ -113,6 +120,16 @@ int main(void)
         LED_Process(&led1, now);
 		    LED_Process(&led2, now);
        dac_triangular_wave(4096,500,20,100);
+
+           // 阻塞发送
+//    UART_Send(&hUart1, tx_buf, sizeof(tx_buf)-1, UART_MODE_BLOCKING);
+//    HAL_Delay(100);
+    // 中断接收
+    UART_Receive(&hUart1, rx_buf, sizeof(rx_buf), UART_MODE_IT);
+    
+    // DMA 发送
+    UART_Send(&hUart1, rx_buf, sizeof(rx_buf)-1, UART_MODE_DMA);
+    HAL_Delay(100);
 
   }
   /* USER CODE END 3 */
