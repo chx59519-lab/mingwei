@@ -23,6 +23,9 @@ mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
+mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
+mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
@@ -31,6 +34,7 @@ mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 mingwei\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+mingwei\main.o: ../Core/Inc/adc.h
 mingwei\main.o: ../Core/Inc/dac.h
 mingwei\main.o: ../Core/Inc/dma.h
 mingwei\main.o: ../Core/Inc/usart.h
@@ -39,3 +43,7 @@ mingwei\main.o: ./APP/Led.h
 mingwei\main.o: ./BSP_DRIVER/BSP_LED_DRIVER.h
 mingwei\main.o: ./APP/uart_app.h
 mingwei\main.o: ./BSP_DRIVER/bsp_uart_driver.h
+mingwei\main.o: ./APP/dac_app.h
+mingwei\main.o: ./BSP_DRIVER/bsp_dac_driver.h
+mingwei\main.o: ./APP/adc_app.h
+mingwei\main.o: ./BSP_DRIVER/bsp_adc_driver.h

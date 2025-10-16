@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "dac.h"
 #include "dma.h"
 #include "usart.h"
@@ -27,6 +28,8 @@
 /* USER CODE BEGIN Includes */
 #include "Led.h"
 #include "uart_app.h"
+#include "dac_app.h"
+#include "adc_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,7 +55,11 @@ LED_Handle_t led2;
 UART_Handle_t hUart1;
 uint8_t tx_buf[] = "Hello UART!\r\n";
 uint8_t rx_buf[64];
-
+DAC_Handle_t hdac_app;
+ADC_Handle_t hadc_app;
+uint16_t adc_buf[30];
+float adc_data[1];
+float pa;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -98,13 +105,15 @@ int main(void)
   MX_DMA_Init();
   MX_USART1_UART_Init();
   MX_DAC_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   LED_Register(&led1, LED1);
 	LED_Register(&led1, LED2);
-  LED_StartBlink(&led1, 500);
-	LED_StartBlink(&led2, 500);
-
   UART_Register(&hUart1, UART1);
+	DAC_Register(&hdac_app, DAC_CH1);
+  ADC_Register(&hadc_app, ADC_CH1);
+//	ADC_StartRead(&hadc_app,adc_buf,sizeof(adc_buf),ADC_MODE_DMA);
+//	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)adc_buf,sizeof(adc_buf));
 //	dac_set_voltage(3300);
 
   /* USER CODE END 2 */
@@ -116,20 +125,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-        uint32_t now = HAL_GetTick();
-        LED_Process(&led1, now);
-		    LED_Process(&led2, now);
-       dac_triangular_wave(4096,500,20,100);
-
-           // 阻塞发送
-//    UART_Send(&hUart1, tx_buf, sizeof(tx_buf)-1, UART_MODE_BLOCKING);
-//    HAL_Delay(100);
-    // 中断接收
-    UART_Receive(&hUart1, rx_buf, sizeof(rx_buf), UART_MODE_IT);
-    
-    // DMA 发送
-    UART_Send(&hUart1, rx_buf, sizeof(rx_buf)-1, UART_MODE_DMA);
-    HAL_Delay(100);
+		DAC_OutputValue(&hdac_app, 4095);
+    ADC_StartRead(&hadc_app,adc_buf,30,ADC_MODE_DMA);
+		adc_data[0]=0;
+    for(uint8_t i =0;i<30;i++)
+    {
+      adc_data[0]+= adc_buf[i];
+    }
+    pa = ((float)adc_data[0] / 30.0f) * 3.3f / 4095.0f;
 
   }
   /* USER CODE END 3 */
